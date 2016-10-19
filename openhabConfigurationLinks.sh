@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
-#	----------------------------------------------------------------
-# installer for openHAB configuration files
-#	----------------------------------------------------------------
+# ----------------------------------------------------------------
+# Installer for openHAB configuration files
+# Creater: Philip Cutler
+# Contact: greenthegarden@gmail.com
+# Source:  https://github.com/greenthegarden/openHabConfigurationLinks
+# ----------------------------------------------------------------
 
 
 # set openHAB configuration directory
@@ -18,30 +21,30 @@ OPENHAB_CONF_DIRECTORIES=(items persistence rules scripts sitemaps transform tra
 
 PROGNAME=$(basename $0)
 
-#	----------------------------------------------------------------
-#	Function to print script start message
-#	----------------------------------------------------------------
+# ----------------------------------------------------------------
+# Function to print script start message
+# ----------------------------------------------------------------
 function start_message
 {
 	echo "Creating links to OpenHAB configuration files" 1>&2
   echo "Links will be created in directory ${OPENHAB_CFG}" 1>&2
 }
 
-#	----------------------------------------------------------------
-#	Function for exit due to fatal program error
-#		Accepts 1 argument:
-#			string containing descriptive error message
-#	----------------------------------------------------------------
+# ----------------------------------------------------------------
+# Function for exit due to fatal program error
+#   Accepts 1 argument:
+#     string containing descriptive error message
+# ----------------------------------------------------------------
 function error_exit
 {
 	echo "${PROGNAME}: ${1:-"Unknown Error"}" 1>&2
 	exit 1
 }
 
-#	----------------------------------------------------------------
-#	Function to ensure script is run as sudo
+# ----------------------------------------------------------------
+# Function to ensure script is run as sudo
 #   Forces script to exit if not run as sudo
-#	----------------------------------------------------------------
+# ----------------------------------------------------------------
 function ensure_sudo
 {
   if (( $EUID != 0 )) ;
@@ -51,12 +54,12 @@ function ensure_sudo
 }
 
 # ------------------------------------------------------------------
-#	Function to create a symbolic link in a given directory
+# Function to create a symbolic link in a given directory
 # to a given file in the current directory
-#		Accepts 2 arguments:
+#   Accepts 2 arguments:
 #     File symbolic link points to
 #     Directory symbolic link to be created in
-#	----------------------------------------------------------------
+# ----------------------------------------------------------------
 function create_link
 {
   DIR_=$2
@@ -77,13 +80,13 @@ function create_link
 }
 
 # ------------------------------------------------------------------
-#	Function to set given user and group permissions
+# Function to set given user and group permissions
 # for all files within a given directory
-#		Accepts 3 arguments:
+#   Accepts 3 arguments:
 #     User
 #     Group
 #     Directory
-#	----------------------------------------------------------------
+# ----------------------------------------------------------------
 function set_permissions
 {
   USER_="$1"
@@ -93,7 +96,7 @@ function set_permissions
 }
 
 # ------------------------------------------------------------------
-#	Function to check if arrays OPENHAB_FILE_EXTENSIONS and
+# Function to check if arrays OPENHAB_FILE_EXTENSIONS and
 # OPENHAB_CONF_DIRECTORIES are the same length
 #   Forces script to exit if array lengths are different
 #	----------------------------------------------------------------
@@ -106,8 +109,8 @@ function check_array_lengths_match
 }
 
 # ------------------------------------------------------------------
-#	Function process files of specified type in current directory
-#	----------------------------------------------------------------
+# Function process files of specified type in current directory
+# ----------------------------------------------------------------
 function link_files
 {
   iter=0
@@ -131,7 +134,7 @@ function link_files
 
 
 # ------------------------------------------------------------------
-# main script execution starts here
+# Script execution starts here
 # ------------------------------------------------------------------
 
 # error checks
