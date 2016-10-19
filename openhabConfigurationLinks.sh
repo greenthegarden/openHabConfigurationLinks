@@ -27,7 +27,7 @@ PROGNAME=$(basename $0)
 function start_message
 {
 	echo "Creating links to OpenHAB configuration files" 1>&2
-  echo "Links will be created in directory ${OPENHAB_CFG}" 1>&2
+	echo "Links will be created in directory ${OPENHAB_CFG}" 1>&2
 }
 
 # ----------------------------------------------------------------
@@ -47,10 +47,10 @@ function error_exit
 # ----------------------------------------------------------------
 function ensure_sudo
 {
-  if (( $EUID != 0 )) ;
-  then
-    error_exit "Please run as root"
-  fi
+	if (( $EUID != 0 )) ;
+	then
+		error_exit "Please run as root"
+	fi
 }
 
 # ------------------------------------------------------------------
@@ -99,7 +99,7 @@ function set_permissions
 # Function to check if arrays OPENHAB_FILE_EXTENSIONS and
 # OPENHAB_CONF_DIRECTORIES are the same length
 #   Forces script to exit if array lengths are different
-#	----------------------------------------------------------------
+# ----------------------------------------------------------------
 function check_array_lengths_match
 {
   if [ ${#OPENHAB_FILE_EXTENSIONS[@]} -ne ${#OPENHAB_CONF_DIRECTORIES[@]} ] ;
